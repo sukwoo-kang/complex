@@ -8,7 +8,7 @@ before_install:
 script:
   - docker run sukwoo-kang/react-test npm test -- --coverage
 
-after_sucess:
+after_success:
   - docker build -t sukwoo-kang/multi-client ./client
   - docker build -t sukwoo-kang/multi-nginx ./nginx
   - docker build -t sukwoo-kang/multi-server ./server
@@ -18,6 +18,3 @@ after_sucess:
   - docker push sukwoo-kang/multi-nginx
   - docker push sukwoo-kang/multi-server
   - docker push sukwoo-kang/multi-worker
-
-
-
