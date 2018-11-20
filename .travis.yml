@@ -3,18 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t sukwoo-kang/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sukwookang/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run sukwoo-kang/react-test npm test -- --coverage
+  - docker run sukwookang/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t sukwoo-kang/multi-client ./client
-  - docker build -t sukwoo-kang/multi-nginx ./nginx
-  - docker build -t sukwoo-kang/multi-server ./server
-  - docker build -t sukwoo-kang/multi-worker ./worker
+  - docker build -t sukwookang/multi-client ./client
+  - docker build -t sukwookang/multi-nginx ./nginx
+  - docker build -t sukwookang/multi-server ./server
+  - docker build -t sukwookang/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push sukwoo-kang/multi-client
-  - docker push sukwoo-kang/multi-nginx
-  - docker push sukwoo-kang/multi-server
-  - docker push sukwoo-kang/multi-worker
+  - docker push sukwookang/multi-client
+  - docker push sukwookang/multi-nginx
+  - docker push sukwookang/multi-server
+  - docker push sukwookang/multi-worker
